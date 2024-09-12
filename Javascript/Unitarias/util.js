@@ -1,11 +1,16 @@
-exports.generateAge = (name, age) => {
+const generateAge = (name, age) => {
   // Regresa el texto de salida de edad
   return `${name} (${age} años)`;
 };
 
-exports.generateNumber = (name, phoneNumber) => {
+const generateNumber = (name, phoneNumber) => {
   // Regresa el texto de salida de teléfono
   return `${name} (${phoneNumber}, móbil)`;
+};
+
+const generateMail = (name, mail) => {
+  // Regresa el texto de salida del correo
+  return `${name} (Tu correo es: ${mail})`;
 };
 
 exports.createElement = (type, text, className) => {
@@ -16,7 +21,7 @@ exports.createElement = (type, text, className) => {
   return newElement;
 };
 
-exports.validateInput = (text, notEmpty, isNumber) => {
+const validateInput = (text, notEmpty, isNumber) => {
   // Valida el valor ingresado con dos reglas predefinidas
   if (!text) {
     return false;
@@ -29,3 +34,42 @@ exports.validateInput = (text, notEmpty, isNumber) => {
   }
   return true;
 };
+
+exports.checkAndGenerateAge =(name, age) => {
+  if (
+    !validateInput(name, true, false) ||
+    !validateInput(age, false, true)
+  ) {
+    return false;
+  }
+  {
+    return generateAge(name, age);
+  }
+}
+
+exports.checkAndGeneratePhone = (name,phone) => {
+  if(
+    !validateInput(name,true,false) ||
+    !validateInput(phone,false,true)
+  ){
+    return false;
+  }{
+    return generateNumber(name,phone);
+  }
+}
+
+exports.checkAndGenerateMail = (name,mail) => {
+  if(
+    !validateInput(name,true,false) ||
+    !validateInput(mail,false,true)
+  ){
+    return false;
+  }{
+    return generateMail(name,mail);
+  }
+}
+
+exports.generateAge = generateAge;
+exports.validateInput =  validateInput;
+exports.generateNumber = generateNumber;
+exports.generateMail = generateMail;
